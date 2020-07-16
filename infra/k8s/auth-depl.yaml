@@ -15,6 +15,7 @@ spec:
       containers:
         - name: auth
           image: andrecmiguel/auth
+          #image: us.gcr.io/focal-bucksaw-283318/auth
 ---
 apiVersion: v1
 kind: Service
