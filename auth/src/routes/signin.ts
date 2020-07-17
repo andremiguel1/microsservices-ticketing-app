@@ -14,12 +14,17 @@ router.post(
   '/api/users/signin',
   [
     body('email').isEmail().withMessage('E-mail is required'),
-    body('password').trim().notEmpty().withMessage('Password is required'),
+    body('password')
+      .trim()
+      .notEmpty()
+      .withMessage('Password is required'),
   ],
   validateRequest,
   async (req: Request, res: Response) => {
     const { email, password } = req.body;
-    const existingUser = await User.findOne({ email });
+    const existingUser = await User.findOne({
+      email,
+    });
 
     if (!existingUser) {
       throw new BadRequestError('Invalid credentials');
@@ -49,7 +54,9 @@ router.post(
     };
     console.log('Usuário logado');
 
-    return res.status(200).send({ message: 'Done!', existingUser });
+    return res
+      .status(200)
+      .send({ message: 'Done!', existingUser });
   }
 );
 
