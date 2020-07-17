@@ -1,6 +1,6 @@
 apiVersion: apps/v1
 kind: Deployment
-metadata: 
+metadata:
   name: auth-depl
 spec:
   replicas: 1
@@ -16,12 +16,18 @@ spec:
         - name: auth
           image: andrecmiguel/auth
           #image: us.gcr.io/focal-bucksaw-283318/auth
+          env:
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
 ---
 apiVersion: v1
 kind: Service
 metadata:
   name: auth-srv
-spec: 
+spec:
   selector:
     app: auth
   ports:
