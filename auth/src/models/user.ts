@@ -40,12 +40,12 @@ const userSchema = new mongoose.Schema(
 );
 
 userSchema.pre('save', async function (done) {
-  console.log(this.get('password'));
+  //console.log(this.get('password'));
   if (this.isModified('password')) {
     const hashed = await Password.toHash(this.get('password'));
     this.set('password', hashed);
   }
-  console.log(this.get('password'));
+  //console.log(this.get('password'));
 
   done();
 });
@@ -54,6 +54,9 @@ userSchema.statics.build = (userAttrs: UserAttributes) => {
   return new User(userAttrs);
 };
 
-const User = mongoose.model<UserDocument, UserModel>('User', userSchema);
+const User = mongoose.model<UserDocument, UserModel>(
+  'User',
+  userSchema
+);
 
 export { User };

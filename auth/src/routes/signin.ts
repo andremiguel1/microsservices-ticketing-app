@@ -52,7 +52,7 @@ router.post(
     req.session = {
       jwt: userJwt,
     };
-    console.log('Usuário logado');
+    //console.log('Usuário logado');
 
     return res
       .status(200)

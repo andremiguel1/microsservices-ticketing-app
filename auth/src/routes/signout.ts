@@ -3,10 +3,10 @@ import jwt from 'jsonwebtoken';
 
 const router = express.Router();
 
-router.get('/api/users/signout', (req, res) => {
-  console.log('Deslogando usuário');
+router.post('/api/users/signout', (req, res) => {
+  //console.log('Deslogando usuário');
   req.session = null;
-  console.log('Usuário deslogando');
+  //console.log('Usuário deslogando');
   return res.clearCookie('express:sess').send({});
 });
 

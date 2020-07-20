@@ -20,14 +20,14 @@ router.post(
   ],
   validateRequest,
   async (req: Request, res: Response) => {
-    console.log('Criando usuário.');
+    //console.log('Criando usuário.');
 
     const { email, password } = req.body;
 
     const existinguser = await User.findOne({ email });
 
     if (existinguser) {
-      console.log('Email em uso');
+      //console.log('Email em uso');
       throw new BadRequestError('Email em uso');
     }
 
@@ -49,7 +49,7 @@ router.post(
     };
 
     res.status(201).send({ message: 'Done!', user });
-    console.log(`Usuario ${user.email} criado com sucesso`);
+    //console.log(`Usuario ${user.email} criado com sucesso`);
   }
 );
 
