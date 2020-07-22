@@ -1,0 +1,3 @@
+[submodule "microsservices-ticketing-common"]
+	path = microsservices-ticketing-common
+	url = https://github.com/andremiguel1/microsservices-ticketing-common.git
