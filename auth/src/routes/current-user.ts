@@ -1,5 +1,5 @@
 import express, { Request, Response } from 'express';
-import { currentUserHandler } from '../middlewares/current-user-handler';
+import { currentUserHandler } from '@acmtickets/common';
 
 const router = express.Router();
 
